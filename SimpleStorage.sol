@@ -19,14 +19,32 @@ contract SimpleStorage {
     // we update the favorite number but it is not visible we need to add public in declaration
 
 
-    uint256 public favouriteNumber;
+    uint256 myfavouriteNumber; // 0
+   // uint256[] listOfFavouriteNumber;
+
+    struct Person{
+        uint256 favouriteNumber;
+        string name;
+    }
+
+    Person public Amit = Person(8,'amit');
+
+    //Dynamic Array
+
+    Person[] public listOfPeople;
+    
     function store(uint _favouriteNumber) public {
-        favouriteNumber = _favouriteNumber;
+        myfavouriteNumber = _favouriteNumber;
     }
 
     // view, pure
     // view allows functions only to read and not to update state while pure doesnt allows any of this 
     function retrieve() public view returns(uint256){
-        return favouriteNumber;
+        return myfavouriteNumber;
+    }
+
+    function addPerson(string memory _name,uint256 _favouriteNumber) public {
+        Person memory User = Person(_favouriteNumber,_name);
+        listOfPeople.push(User); 
     }
 } // keyword for initializing the contract and SimpleStorage is the assigned name for your contract
