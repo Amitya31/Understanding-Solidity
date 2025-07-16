@@ -15,7 +15,7 @@ contract SimpleStorage {
 
     // function or method is an important part of solidity it is executed when it is called
     // it is identified by the keyword function
-
+    // public keywords allows to see the variable and function to all the nodes on the blockchain
     // we update the favorite number but it is not visible we need to add public in declaration
 
 
@@ -32,6 +32,9 @@ contract SimpleStorage {
     //Dynamic Array
 
     Person[] public listOfPeople;
+
+    // mapping(key=>value) Every key is associated to a value
+    mapping(string => uint256) public nameToFavouriteNumber;
     
     function store(uint _favouriteNumber) public {
         myfavouriteNumber = _favouriteNumber;
@@ -44,7 +47,9 @@ contract SimpleStorage {
     }
 
     function addPerson(string memory _name,uint256 _favouriteNumber) public {
-        Person memory User = Person(_favouriteNumber,_name);
-        listOfPeople.push(User); 
+        listOfPeople.push(Person(_favouriteNumber,_name)); 
+        //here the _name is the key which will return the associated favouriteNumber
+        nameToFavouriteNumber[_name] = _favouriteNumber;
     }
+
 } // keyword for initializing the contract and SimpleStorage is the assigned name for your contract
