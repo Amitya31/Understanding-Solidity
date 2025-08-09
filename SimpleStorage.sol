@@ -36,7 +36,7 @@ contract SimpleStorage {
     // mapping(key=>value) Every key is associated to a value
     mapping(string => uint256) public nameToFavouriteNumber;
     
-    function store(uint _favouriteNumber) public {
+    function store(uint _favouriteNumber) public virtual { //virtual indicates that the function is overridable
         myfavouriteNumber = _favouriteNumber;
     }
 
@@ -53,3 +53,7 @@ contract SimpleStorage {
     }
 
 } // keyword for initializing the contract and SimpleStorage is the assigned name for your contract
+
+contract SimpleStorage2 {}
+contract SimpleStorage3 {}
+contract SimpleStorage4 {}
